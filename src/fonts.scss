@@ -1,0 +1,46 @@
+@use "sass:map";
+
+@font-face {
+    font-family: 'Inter';
+    src: url("./assets/fonts/Inter-VariableFont_slnt\,wght.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400, 700;
+    font-display: swap;
+}
+
+$text-presets: (
+    "1": (
+        size: 24px,
+        line-height: 1.5,
+        letter-spacing: 0,
+        font-weight: 700,
+    ),
+    "2": (
+        size: 14px,
+        line-height: 1.5,
+        letter-spacing: 0,
+        font-weight: 400,
+    ),
+    "2--bold": (
+        size: 14px,
+        line-height: 1.5,
+        letter-spacing: 0,
+        font-weight: 700,
+    ),
+);
+
+@mixin apply-text-preset($name) {
+    $preset: map.get($text-presets , $name);
+    @if $preset {
+        font-size: map.get($preset, size);
+        line-height: map.get($preset, line-height);
+        letter-spacing: map.get($preset, letter-spacing);
+        font-weight: map.get($preset, font-weight);
+    }
+}
+
+@each $name, $style in $text-presets {
+    .text-#{$name} {
+        @include apply-text-preset($name);
+    }
+}

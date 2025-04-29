@@ -1,24 +1,58 @@
 import styles from "./ProfileCard.module.scss";
-import avatar from "./../../assets/images/avatar-jessica.jpeg";
+import React from "react";
 
-function ProfileCard() {
+interface ProfileCardProps {
+  avatar: string;
+  name: string;
+  location: string;
+  bio: string;
+  links?: {
+    link: string;
+    name: string;
+  }[];
+}
+
+const ProfileCard: React.FC<ProfileCardProps> = ({
+  avatar,
+  name,
+  location,
+  bio,
+  links,
+}) => {
+  const linkElements = links?.map((link) => {
+    return (
+      <li key={link.name}>
+        <a className={styles["profile-card__link"]} href={link.link}>
+          {link.name}
+        </a>
+      </li>
+    );
+  });
+
   return (
     <div className={styles["profile-card"]}>
-        <img className={styles["profile-card__avatar"]} src={avatar} alt="profile pic" />
-        <div className={styles["profile-card__personal-info"]}>
-            <h2 className={styles["profile-card__name"]}>Jessica Randall</h2>
-            <span className={styles["profile-card__location"]}>London, United Kingdom</span>
-        </div>
-        <p className={styles["profile-card__bio"]}>"Front-end developer and avid reader."</p>
-        <ul className={styles["profile-card__links"]}>
-            <li><a className={styles["profile-card__link"]} href="#">Github</a></li>
-            <li><a className={styles["profile-card__link"]} href="#">Frontend Mentor</a></li>
-            <li><a className={styles["profile-card__link"]} href="#">LinkedIn</a></li>
-            <li><a className={styles["profile-card__link"]} href="#">Twitter</a></li>
-            <li><a className={styles["profile-card__link"]} href="#">Instagram</a></li>
-        </ul>
+      {/* avatar */}
+      <img
+        className={styles["profile-card__avatar"]}
+        src={avatar}
+        alt={`Profile picture of ${name}`}
+      />
+
+      {/* name and location */}
+      <div className={styles["profile-card__personal-info"]}>
+        <h2 className={styles["profile-card__name"]}>{name}</h2>
+        <span className={styles["profile-card__location"]}>{location}</span>
+      </div>
+
+      {/* bio */}
+      <p className={styles["profile-card__bio"]}>{bio}</p>
+
+      {/* links */}
+      {links && (
+        <ul className={styles["profile-card__links"]}>{linkElements}</ul>
+      )}
     </div>
   );
-}
+};
 
 export default ProfileCard;

@@ -1,0 +1,77 @@
+@use "./../../fonts.scss";
+
+.profile-card {
+    color: var(--color-white);
+    background-color: var(--color-grey-800);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-300);
+    padding: var(--space-500);
+    border-radius: var(--space-150);
+    width: fit-content;
+    text-align: center;
+
+    &__avatar {
+        aspect-ratio: 1 / 1;
+        border-radius: 100%;
+        max-width: 88px;
+    }
+
+    &__personal-info {
+        text-align: center
+    }
+
+    &__name {
+        @include fonts.apply-text-preset("1");
+    }
+
+    &__location {
+        @include fonts.apply-text-preset("2--bold");
+        color: var(--color-green);
+    }
+
+    &__bio {
+        @include fonts.apply-text-preset("2");
+        padding: 0 var(--space-300);
+    }
+
+    &__links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-200);
+        width: 100%;
+        list-style: none;
+
+        li {
+            width: 100%;
+        }
+    }
+
+    &__link {
+        @include fonts.apply-text-preset("2--bold");
+        color: var(--color-white);
+        text-decoration: none;
+        background-color: var(--color-grey-700);
+        padding: var(--space-150);
+        width: 100%;
+        max-width: 304px;
+        text-align: center;
+        border-radius: var(--space-100);
+        display: block;
+
+        &:hover {
+            color: var(--color-grey-700);
+            background-color: var(--color-green);
+        }
+    }
+
+}
+
+
+@media (max-width: 578px) {
+    .profile-card {
+        padding: var(--space-300);
+    }
+}

@@ -5,7 +5,8 @@ import avatar from "./assets/images/avatar-jessica.jpeg";
 function App() {
   
   return (
-    <>
+    <main>
+      <h1 className='sr-only'>Social links profile</h1>
       <ProfileCard 
         avatar={avatar}
         name='Jessica Randall'
@@ -19,7 +20,7 @@ function App() {
           {link: "#", name: "Instagram"},
         ]}
       />
-    </>
+    </main>
   )
 }
 

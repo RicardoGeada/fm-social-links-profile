@@ -1,6 +1,14 @@
 import styles from "./ProfileCard.module.scss";
 import React from "react";
 
+/**
+ * Props für die ProfileCard-Komponente.
+ * @property {string} avatar - url to profile image
+ * @property {string} name - persons name
+ * @property {string} location - persons location
+ * @property {string} bio - biography
+ * @property {{ link: string; name: string; }[]} [links] - optional list of social links
+ */
 interface ProfileCardProps {
   avatar: string;
   name: string;

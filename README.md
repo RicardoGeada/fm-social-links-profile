@@ -43,7 +43,31 @@ Users should be able to:
 ### What I learned
 
 In this small project, I learned how to apply the BEM (Block Element Modifier) methodology to write cleaner, more reusable CSS.
+
 I also learned how to deploy a React app to GitHub Pages.
+I found a working solution using the gh-pages package. I updated the package.json with the correct homepage URL and added deploy scripts:
+
+"homepage": "https://<username>.github.io/<repository>",
+"scripts": {
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
+}
+I also configured the base path in vite.config.ts:
+
+export default defineConfig({
+  plugins: [react()],
+  base: '/<repository>/',
+})
+This setup allowed me to successfully deploy the app using:
+
+npm run deploy
+Finally I just needed to activate Github Pages for the repository:
+
+Go to your repository on GitHub
+Navigate to Settings → Pages
+Under Source, select:
+Branch: gh-pages
+Folder: / (root)
 
 ### Continued development
 

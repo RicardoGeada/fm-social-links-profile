@@ -61,7 +61,9 @@
         border-radius: var(--space-100);
         display: block;
 
-        &:hover {
+        &:hover,
+        &:focus {
+            outline: transparent;
             color: var(--color-grey-700);
             background-color: var(--color-green);
         }
